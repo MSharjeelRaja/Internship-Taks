@@ -1,0 +1,53 @@
+<div class="form">
+  <h2>Form Task</h2>
+  <form [formGroup]="userForm">
+
+    <div class="form-group fg">
+      <label for="name">Name:</label>
+      <input placeholder="Username" formControlName="name" type="text" class="form-control" id="name" />
+      <div *ngIf="name?.invalid && name?.touched" class="text-danger">
+        <span>Name is required and must be less than 50 characters</span>
+      </div>
+
+    </div>
+
+
+    <div class="form-group fg">
+      <label for="email">Email address:</label>
+      <input placeholder="ABC@gmail.com" formControlName="email" type="email" class="form-control" id="email" />
+      <div *ngIf="email?.invalid && email?.touched" class="text-danger">
+        <span *ngIf="email?.errors?.['required']">Email is required</span>
+        <span *ngIf="email?.errors?.['email']">Email must be valid</span>
+
+      </div>
+    </div>
+
+
+    <div class="form-group fg">
+      <label for="phone">Phone:</label>
+      <input type="text" placeholder="03xxxxxxxx"formControlName="phone" class="form-control" id="phone" />
+      <div *ngIf="phone?.invalid && phone?.touched" class="text-danger">
+        <span *ngIf="phone?.errors?.['required']">Phone is required</span>
+        <span *ngIf="phone?.errors?.['minlength'] || phone?.errors?.['maxlength']">
+          Phone must be exactly 11 digits
+        </span>
+        <span *ngIf="phone?.errors?.['pattern']">Phone must start with 03 </span>
+      </div>
+    </div>
+
+
+    <div class="form-group fg">
+      <label for="address" >Address:</label>
+      <textarea type="text"placeholder="Street#00 , ABC Colony ,ABC City" formControlName="address" class="form-control ad" id="address" ></textarea>
+      <div *ngIf="address?.invalid && address?.touched" class="text-danger">
+        <span *ngIf="address?.errors?.['required']">Address is required</span>
+        <span *ngIf="address?.errors?.['maxlength']">Address must be under 60 characters</span>
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-default bg-primary text-white" (click)="validatedata()">
+      Submit
+    </button>
+  </form>
+</div>

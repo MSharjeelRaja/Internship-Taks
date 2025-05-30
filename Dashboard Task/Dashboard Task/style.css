@@ -1,0 +1,331 @@
+
+body{
+    padding: 0;
+    margin: 0;
+
+}
+.tablecontent{
+    background-color: #292d39;
+    margin-top: 4px;
+    min-height: 100%;
+}
+.mainbody{    color: white;
+    background-color:#202022;
+    height: 78vh;font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #292d39;
+    align-items: center;
+    padding: 0 10px;
+}
+
+
+
+.nav {
+    display: flex;
+    align-items: center;
+   
+    padding: 4px;
+    gap: 4px;
+}
+
+.nav img {
+    width: 40px;
+    height: 40px;
+}
+.clinic img{
+    width: 14px;
+    height: 14px;
+}
+.nav .p {
+    font-family: Arial, Helvetica, sans-serif;
+    border-right: 2px solid rgb(66, 66, 66);
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(174, 174, 174);
+    padding: 8px 12px; 
+    height: 6vh; 
+    display: flex;
+    align-items: center;
+    margin: 0;
+}.cliniccontacts{
+    display: flex;
+ 
+    align-items: center;
+}
+.cliniccontacts p{
+    flex-basis: 37%;
+    padding: 5px 0px;
+    color: white;
+    font-weight: bold;
+    background-color: #6b6f7a;
+    border-radius: 6%;
+    text-align: center;
+    font-size: 12px;
+}
+  .scerch{
+    display:flex;
+    align-items: center;
+    gap: 4px;
+ border-radius: 4px;
+    height: 4vh;
+    
+    padding: 1px 7px;
+    background-color:#434957;
+  }
+  .scerch input{
+    background-color:#434957;
+    gap: 4px;
+    border-radius: 4px;
+       height: 4vh;
+       width: 100%;
+       padding: 1px 7px;
+       border: none;
+       color: white;
+       font-size: 15px;
+  }
+  input:focus {
+    border: none;
+    outline: none;
+  }
+  .searchcontacts {
+    position: absolute;
+    top: 103px; 
+    padding: 5px;
+    width: 46vh
+    ;
+  
+    border-radius: 8px;
+    background-color: #282e44e7;
+    right: 0;
+    z-index: 100;
+
+  }
+  .clinic {
+align-items: center;
+display: flex;
+    gap:3px;
+   color:#9b9b9b;
+    }
+.switch{
+    background-color:#292d39;
+margin: 2px;
+position: relative;
+display: flex;
+
+justify-content: space-between;
+}
+.sec2{max-height: 32px;
+    display: flex; width: 47vh;
+    position: relative;
+    border-radius: 8px;
+    background-color: #686868;
+    align-items: center;
+    gap: 10px;
+   
+}
+.nav2{
+
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 18px;
+}
+
+.img{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+}
+.sc{
+
+
+color:  rgb(113, 113, 113);
+font-size: 12px;
+padding: 10px 8px;
+    border-left: 2px solid rgb(113, 113, 113);
+    border-right: 2px solid rgb(113, 113, 113);
+}
+.para{
+    font-size: 9px;  margin: 0px;
+    color: #979797;
+}
+
+.green{
+    color: green;
+    font-weight: 900;
+    font-size: 10px;
+  
+}
+.head{
+    font-weight: 700;
+    font-size: 12px;
+    margin: 0px;
+    color: #3894cc;
+}
+.lg{
+    width: 9px;
+}
+.profile{
+   display: flex;justify-content: center;
+   align-items: center;
+ gap: 9px;
+   padding: 2px 6px;
+}
+
+
+.contacts{
+    display: flex;
+    align-items: center;
+    gap:190px;
+    
+}
+.contact{   gap:5px;
+    display: flex;
+    align-items: center;
+}
+.contact p{
+    font-size: 16px;margin-top: 20px;
+}
+ .btn{ 
+   font-size: 14px;  font-weight:300;
+padding: 6px;
+
+background-color: #3894cc;
+color: white;
+
+border: none;
+
+
+
+
+}
+
+
+.logo{
+    width: 17px;
+    height: 17px;
+}
+.logo1{
+    width: 20px;
+    height: 24px;
+}
+.f{
+    margin-right: 7px;
+}
+.l{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding:4px;
+    background-color:#109ef7;
+}
+.search{
+    width: 22px;
+    height: 22px;
+}
+
+  .orders{
+   display: flex;
+ 
+   
+ padding: 0px 30px;
+
+gap:6px;
+align-items: center;
+    background-color:#292d39;
+  }
+ 
+
+ 
+  .sec1 p{
+    color: white;
+    font-weight: 600;
+  }
+  .peoples {
+  
+    padding-right: 8px;
+  }
+  .scroll-section {
+    max-height: 537px; 
+    overflow-y: scroll;
+  }
+  
+  .people{
+
+  display: flex;
+  
+  gap:19px;
+
+  }
+  .names p{
+    margin: 0;
+   font-size: 9px;
+color: #6c6f75;
+  }
+  .p{
+margin-top: 0px;
+font-size: 14px;
+color: #ffffff;
+  }
+
+  .logos{
+    margin: 9px 5px;
+    width: 20px;
+  }
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -10px;
+}
+.imgs{
+    width: 32px;
+    position: relative;
+    border-radius: 100%;
+ 
+}
+.status{
+    position: absolute;
+    right: -6%;
+    top: 1%;   border: 1px solid white;
+    padding: 6px;
+    border-radius: 100%;
+    background-color: #08aa46
+}
+.orng{
+    background-color: #f1b252
+}.red{
+    background-color: #cd0c0d
+}
+@media (max-width: 768px) {
+    .sec1{
+        margin: 0px 0px;
+       
+        gap:0px;
+     
+        
+          }
+         
+          .sec1 p{
+            color: white;
+            font-weight: 200;
+            font-size: 15px;
+          }
+          .searchcontacts{
+            display: none;
+          }
+  .search-container{
+    width: 30%;
+  }
+   .main{
+    overflow: hidden;
+   }
+  
+  
+  }
+  

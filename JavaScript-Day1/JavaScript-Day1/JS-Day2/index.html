@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .divs{
+        background-color: rgb(29, 29, 29);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        align-items: center;
+        padding-top: 20px;
+    }
+    .tabs{
+        display: flex;
+        gap: 90px;
+        justify-content: center;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        background-color: black;
+        padding: 22px 0px;
+    }
+    .tabs h4:hover{
+        color: red;
+        text-decoration: underline;
+        transform: translateY(-3px);
+        cursor: pointer;
+    }
+    .tabs h4 {
+        transition: ease-in-out 0.3s; 
+    }
+    .hms{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 3px;
+        margin: 5px;
+        text-align: center;
+        color: rgb(172, 163, 163);
+        font-size: 20px;
+        border: 2px dotted red;
+        border-radius: 10px;
+        width: 90%;
+    }
+    h1{
+        color: rgb(255, 81, 81);
+    }
+    @keyframes animate {
+        0% {
+            color: red;
+        }
+        25% {
+            color: rgb(241, 67, 52);
+            transform: translateY(-5px);
+        }
+        50% {
+            color: rgb(189, 136, 62);
+        }
+        75% {
+            color: rgb(112, 112, 112);
+            transform: translateY(5px);
+        }
+        100% {
+            color: rgb(149, 149, 149);
+        }
+    }
+    .animate {
+        animation: animate 1.5s ease-in-out;
+        animation-iteration-count: 3;
+    }
+    @keyframes slide-in {
+        0%{
+            transform: translateX(-680px);
+            opacity: 0%;
+        }
+        30%{
+            opacity: 16%;
+        }
+        50%{
+            opacity: 30%;
+        }
+        80%{
+            opacity: 80%;
+        }
+        100%{
+            transform: translateX(0px);
+            opacity: 90%;
+        }
+    }
+    @keyframes slide-img {
+        0%{
+            transform: translateX(-180px);
+            opacity: 0%;
+        }
+        30%{
+            opacity: 16%;
+        }
+        50%{
+            opacity: 30%;
+        }
+        80%{
+            opacity: 80%;
+        }
+        100%{
+            transform: translateX(0px);
+            opacity: 90%;
+        }
+    }
+    @keyframes slide-img-R {
+        0%{
+            transform: translateX(180px);
+            opacity: 0%;
+        }
+        30%{
+            opacity: 16%;
+        }
+        50%{
+            opacity: 30%;
+        }
+        80%{
+            opacity: 80%;
+        }
+        100%{
+            transform: translateX(0px);
+            opacity: 90%;
+        }
+    }
+    .img-slide-left {
+        animation: slide-img 1s ease-in-out;
+    }
+    .img-slide-right {
+        animation: slide-img-R 1s ease-in-out;
+    }
+    .section-slide {
+        animation: slide-in 0.5s ease-in-out;
+    }
+    .hidden {
+        display: none;
+    }
+    .icons{
+        display: flex;
+        gap: 7px;
+        margin: 10px;
+    }
+    .icon{
+        padding: 5px;
+        border-radius: 100%;
+        background-color: rgb(255, 255, 255);
+    }
+    .icon-active{
+        background-color: rgb(245, 32, 32);
+    }
+    .imgcon button{
+        padding: 5px 20px;
+        text-align: center;
+        background-color: rgb(146, 146, 146);
+        border-radius: 10px;
+    }
+    .imgcon button:hover{
+        background-color: rgb(173, 17, 17);
+    }
+    .imgcon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .imgcon img{
+        min-width: 500px;
+        max-width: 500px;
+        min-height: 300px;
+        max-height: 300px;
+        margin: 5px 20px;
+        border-radius: 10px;
+    }
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="tabs">
+            <h4 class="home" id="home">Home</h4>
+            <h4 class="home" id="cn">Contact</h4>
+            <h4 class="home" id="ab">About</h4>
+        </div>
+
+        <div class="divs">
+            <div id="hms" class="hms">
+                <h1>Home Section</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, 
+                    laboriosam! A aliquid delectus
+                    ea harum aperiam nostrum, dolorem ipsam maxime facilis aliquam perspiciatis molestiae, tempore dolore autem, nam sit qui!</p>
+                <div class="imgcon">
+                    <button id="prev">Previous</button>
+                    <img id="image" src="../e.jpg" alt="">
+                    <button id="next">Next</button>
+                </div>
+                <div class="icons" id="icons">
+                    <div class="icon icon-active" data-index="0"></div>
+                    <div class="icon" data-index="1"></div>
+                    <div class="icon" data-index="2"></div>
+                    <div class="icon" data-index="3"></div>
+                </div>
+            </div>
+            <div id="cns" class="hms hidden">
+                <h1>Contact Section</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, 
+                    laboriosam! A aliquid delectus
+                    ea harum aperiam nostrum, dolorem ipsam maxime facilis aliquam perspiciatis molestiae, tempore dolore autem, nam sit qui!</p>
+            </div>
+            <div id="abs" class="hms hidden">
+                <h1>About Section</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, 
+                    laboriosam! A aliquid delectus
+                    ea harum aperiam nostrum, dolorem ipsam maxime facilis aliquam perspiciatis molestiae, tempore dolore autem, nam sit qui!</p>
+            </div>
+        </div>
+    </div>
+    <script>
+       
+     
+
+const img = document.getElementById('image');
+const nextbtn = document.getElementById('next');
+const prev = document.getElementById('prev');
+const icons = document.querySelectorAll('.icon');
+
+const images = ['../e.jpg', '../q.jpg', '../s.png', '../w.jpg'];
+let count = 0;
+let autoSlideInterval;
+
+
+
+function updateImage(dir) {
+   
+    if(dir === 'next') {
+        count = (count + 1) % images.length;
+    } else {
+        count = (count - 1 + images.length) % images.length;
+    }
+
+
+    img.classList.remove('img-slide-left', 'img-slide-right');
+    void img.offsetWidth;
+    
+
+    if (dir === 'next'||dir==='n') {
+        img.classList.add('img-slide-left');
+    } else {
+        img.classList.add('img-slide-right');
+    }
+    
+
+    img.src = images[count];
+    
+    icons.forEach((icon, index) => {
+        icon.classList.toggle('icon-active', index === count);
+    });
+}
+
+
+nextbtn.addEventListener('click', () => {
+    clearInterval(autoSlideInterval);
+    updateImage('next');
+    startAutoSlide();
+});
+
+prev.addEventListener('click', () => {
+    clearInterval(autoSlideInterval);
+    updateImage('prev');
+    startAutoSlide();
+});
+
+
+icons.forEach(icon => {
+    icon.addEventListener('click', function() {
+        clearInterval(autoSlideInterval);
+        const newIndex = parseInt(this.getAttribute('data-index'))+1;
+        
+console.log(count+'before')
+              const direction = newIndex > count ? 'n' : 'p';
+
+        count = newIndex;
+        console.log(count+'after')
+        updateImage(direction);
+        
+        
+    });
+});
+
+function startAutoSlide() {
+    clearInterval(autoSlideInterval); 
+    autoSlideInterval = setInterval(() => {
+        updateImage('next');
+    }, 3000);
+}
+
+startAutoSlide();
+
+const home = document.getElementById('home');
+const contact = document.getElementById('cn');
+const about = document.getElementById('ab');
+const homesection = document.getElementById('hms');
+const contactsection = document.getElementById('cns');
+const aboutsection = document.getElementById('abs');
+
+function showSection(section, tab) {
+    home.style.color = 'white';
+    contact.style.color = 'white';
+    about.style.color = 'white';
+    tab.style.color = 'red';
+    
+    homesection.classList.add('hidden');
+    contactsection.classList.add('hidden');
+    aboutsection.classList.add('hidden');
+    
+    homesection.classList.remove('section-slide');
+    contactsection.classList.remove('section-slide');
+    aboutsection.classList.remove('section-slide');
+    
+    void section.offsetWidth;
+    
+    section.classList.remove('hidden');
+    section.classList.add('section-slide');
+}
+
+home.addEventListener('click', () => showSection(homesection, home));
+contact.addEventListener('click', () => showSection(contactsection, contact));
+about.addEventListener('click', () => showSection(aboutsection, about));
+
+showSection(homesection, home);
+    </script>
+</body>
+</html>

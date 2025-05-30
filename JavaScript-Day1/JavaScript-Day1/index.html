@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tailwind CDN Example</title>
+  <style>
+    h1{
+      text-align: center;
+      text-decoration: underline;
+    }
+    .counter{
+         display: flex;
+         flex-direction: column;
+      justify-content: center;
+ align-items: center;  
+    }
+   .todo{
+   
+    background-color: rgb(80, 80, 80);
+  width: 460px;
+
+
+   }
+   .new{
+      display: flex;
+  justify-content: center;
+  flex-direction: column;
+align-items: center;
+gap: 20px;
+   }
+   #text{
+    width: 380px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: gray;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-size: 19px;
+   }
+   #text:focus{
+ outline: none;
+    border:2px solid rgb(78, 0, 0)
+   }
+  .todo ol {
+  list-style: square;
+  color: rgb(39, 1, 1);
+  font-weight: 600;
+  font-size: 19px;
+
+ 
+}
+
+    #value{
+      color: red;
+      text-align: center;
+      font-size: 40px;
+      font-weight: 700;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 100%;
+    }
+.btn{
+  padding: 10px;
+  width: 130px;
+  background-color: rgb(234, 17, 17);
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+}
+
+.cn{
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+#inc{
+  background-color: rgb(7, 136, 234);
+}
+.menu{
+  margin-top: 10px;
+  background-color: gray;
+}
+.opt{
+  color: white;
+}
+.opt ul{
+  list-style: none;
+  
+}
+.cn ul li{
+  padding: 10px 20px;
+  background-color: rgb(13, 150, 181);
+  border-radius: 5px;
+
+}
+#ref{
+  background-color: green;
+ visibility: hidden;
+}
+ .checkbox{
+  padding: 10px 20px;
+  color: rgb(255, 0, 0);
+ display:flex;
+ gap:10px;
+ font-weight: 600;
+ font-size: 20px;
+ font-family: Arial, Helvetica, sans-serif;
+ align-items: center;
+ margin: 20px;
+
+ }
+ .check{
+    width: 30px;
+    height: 30px;
+ }
+.todo .btn{
+  margin: 20px 0px;
+}
+.stars{
+  background-color: rgb(64, 99, 87);
+ padding: 20px;
+ position: relative;
+}
+.stars img{
+  position: absolute;
+  top: 33px;
+  right:30px;
+}
+input{
+  cursor: pointer;
+}
+img{
+  cursor: pointer;
+}
+  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div class="counter bg-black min-h-[100vh] p-10">
+ <div class="cn  max-h-[100vh] border-2 border-blue-500 rounded p-[40px] w-[460px] mx-auto p-4">
+
+  <h1 class="text-3xl font-bold text-blue-700 ">Counter</h1>
+
+<h2 id="value" class="">0</h2>
+
+<div class="btns flex gap-5 justify-center mt-[50px]">
+<button id="dec" class="btn" >Decrement</button>
+<button id="ref" class="btn "  >Reset</button>
+<button id="inc" class="btn"  >Increment</button>
+    </div>
+<button id="menu" class="btn menu ">Menu</button>
+<div id="options" class="opt m-[40px] hidden ">
+  <ul  class="flex gap-[50px]">
+    <li id="r" style="background-color: Red;" >Red</li>
+    <li id="b">Blue</li>
+    <li id="g" style="background-color: green;">Green</li>
+  </ul>
+</div>
+<div class="checkbox">
+<input type="checkbox"  class="check" id="check" >
+<span>Disbale Counter</span>
+</div>
+
+</div>
+
+<div class="todo p-[30px] rounded-[10px]  m-[20px]">
+  <div class="new">
+<h1 class="text-3xl font-bold text-black-700 ">To-Do List</h1>
+
+<input type="text" name="" id="text"></div>
+<div class="btns flex gap-[20px] justify-center">
+<button id="add" class="add btn bg-yellow-700">Add</button>
+<button id="rem" class="add btn bg-red-700">Remove</button>
+</div>
+<ol id="ol">
+  <li>Data Here ...</li>
+
+   
+</ol>
+</div>
+
+
+
+<div class="stars ">
+<input type="text" name="" id="text" class="txt">
+<img style="width: 20px;" id="img" src="./image copy.png" alt="">
+
+
+</div>
+
+</div>
+
+  </div>
+  <script>
+ 
+        var value=0
+    const inc=document.getElementById('inc');
+    const dec=document.getElementById('dec')
+    let res=document.getElementById('ref');
+
+    inc.addEventListener('click',()=>{
+      res.style.visibility='visible'
+        dec.style.visibility='visible'
+          if(value>=10){
+            setTimeout()
+            
+            {
+ alert('Count Reached 10 !!')
+            }
+           
+      inc.style.visibility='hidden';
+      return;
+    }
+      value+=1;
+ document.getElementById('value').innerHTML=value;
+
+    })
+    dec.addEventListener('click',()=>{
+        res.style.visibility='visible'
+       inc.style.visibility='visible'
+         if(value>0){
+        value-=1;
+      document.getElementById('value').innerHTML=value
+    }
+    else{
+      dec.style.visibility='hidden'
+    }
+  
+    })
+    addEventListener('keypress',()=>{
+   
+      value=0;
+      document.getElementById('value').innerHTML=value
+    })
+     res.addEventListener('click',()=>{
+         inc.style.visibility='visible'
+      dec.style.visibility='visible'
+      value=0;
+      document.getElementById('value').innerHTML=value
+    })
+var add=document.getElementById('add')
+var rem=document.getElementById('rem');
+
+var ol=document.getElementById('ol')
+const texts = document.getElementsByClassName('txt')[0];
+const pass = document.getElementById('img');
+
+pass.addEventListener('click', () => {
+  if (texts.type === 'password') {
+    texts.type = 'text';
+  } else {
+    texts.type = 'password';
+  }
+});
+
+add.addEventListener('click',()=>{
+  if(text.value==''){
+    alert('Text Field is Empty !!')
+    return
+  }
+  
+ var li=document.createElement('li')
+ li.innerHTML=text.value;
+ li.style.color='yellow';
+  ol.appendChild(li)
+  text.value=''
+})
+rem.addEventListener('click',()=>{
+  ol.lastElementChild.remove();
+})
+    var btn = document.getElementById('menu');
+btn.addEventListener('click', () => {
+ const options = document.getElementById('options');
+options.classList.toggle('hidden');
+
+});
+var check=document.getElementById('check');
+check.addEventListener('change',()=>{
+if(check.checked){
+inc.style.visibility='hidden'
+res.style.visibility='hidden'
+dec.style.display='none'
+}
+else{
+  res.style.visibility='visible'
+  inc.style.visibility='visible'
+dec.style.display='block'
+}
+})
+
+var c = document.querySelector('#value');
+c.addEventListener('dblclick', () => {
+  value *= 2;
+  document.getElementById('value').innerHTML = value;
+});
+c.addEventListener('mouseenter',()=>{
+c.style.backgroundColor='yellow'
+})
+c.addEventListener('mouseleave',()=>{
+c.style.backgroundColor=''
+})
+var red=document.getElementById('r')
+var blue=document.getElementById('b')
+var green=document.getElementById('g')
+v= document.getElementById('value');
+red.addEventListener('click',()=>{
+v.style.color='red';
+})
+
+blue.addEventListener('click',()=>{
+v.style.color='blue';
+})
+green.addEventListener('click',()=>{
+v.style.color='green';
+})
+  </script>
+</body>
+</html>

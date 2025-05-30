@@ -1,0 +1,53 @@
+@mixin flex{
+     justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+    font-weight: 700;
+    color: red;
+    font-size: 23px;
+    text-align: center;
+
+}
+
+body{
+      @include flex;
+    gap: 120px;
+    padding: 20px;
+}
+ button{
+    padding: 10px;
+    background-color: rgb(197, 21, 21);
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+      font-size: 18px; font-weight: bold;
+      margin-top: 20px;
+  }
+.comps{
+     position: relative;
+
+}
+
+.btns{
+      position: absolute;
+    top: 50%;
+@include flex;
+}
+  :hover{
+cursor: pointer;
+    color: rgb(255, 255, 255);
+  }
+@media only screen and (max-width: 800px) {
+
+  .comps{
+    display: flex;
+flex-direction: column;
+  }
+.btns{
+      position: absolute;
+    top: 70%;
+@include flex;
+}
+}
