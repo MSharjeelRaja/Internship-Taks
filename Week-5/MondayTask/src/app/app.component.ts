@@ -27,6 +27,12 @@ export class AppComponent {
   title = 'MondayTask';
   kilometers=signal(0)
   liters=signal(0)
-  avg=computed(()=>((this.kilometers()/this.liters())*100).toFixed(2))
+ avg = computed(() => {
+  return this.liters() > 0
+    ? +(this.kilometers() / this.liters()).toFixed(1)
+    : 0;
+});
 
-}
+
+  }
+
