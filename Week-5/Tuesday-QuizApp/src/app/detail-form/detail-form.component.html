@@ -1,0 +1,186 @@
+<div class="form">
+  <div class="example-container">
+    <form [formGroup]="form">
+      <div
+        *ngIf="step === 1"
+        class="steps step1"
+        [ngStyle]="
+          error
+            ? { border: '2px solid red' }
+            : { border: '2px solid rgb(81, 81, 81)' }
+        "
+      >
+        <h3>Personal Details</h3>
+        <div class="example-form-fields">
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input
+              class="input"
+              matInput
+              placeholder="Enter name"
+              formControlName="name"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Age</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="Enter age"
+              formControlName="Age"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Phone number</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="PhoneNo"
+              placeholder="Enter phone"
+              maxlength="11"
+            />
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-hint>Include +923</mat-hint>
+
+            <mat-error
+              *ngIf="
+                form.get('PhoneNo')?.hasError('required') &&
+                form.get('PhoneNo')?.touched
+              "
+            >
+              Phone number is required
+            </mat-error>
+
+            <mat-error
+              *ngIf="
+                form.get('PhoneNo')?.hasError('minlength') &&
+                form.get('PhoneNo')?.touched
+              "
+            >
+              Phone number must be at least 10 digits
+            </mat-error>
+            <mat-error
+              *ngIf="
+                form.get('PhoneNo')?.hasError('pattern') &&
+                form.get('PhoneNo')?.touched
+              "
+            >
+              Phone number must Start With 923 and 11 Digits
+            </mat-error>
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            class="next"
+            color="primary"
+            (click)="nextForm()"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+
+      <div
+        *ngIf="step === 2"
+        class="steps step2"
+        [ngStyle]="
+          error
+            ? { border: '2px solid red' }
+            : { border: '2px solid rgb(81, 81, 81)' }
+        "
+      >
+        <h3>Professional Details</h3>
+        <div class="example-form-fields">
+          <mat-form-field appearance="fill">
+            <mat-label>Experience</mat-label>
+            <input
+              matInput
+              placeholder="e.g. 2 years"
+              formControlName="Experience"
+            />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Select</mat-label>
+            <mat-select formControlName="Technology">
+              <mat-option value="Angular">Angular</mat-option>
+              <mat-option value="React">React</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>GPA</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="Enter GPA"
+              formControlName="Gpa"
+            />
+          </mat-form-field>
+          <div class="btns">
+            <button mat-raised-button class="back" (click)="prevForm()">
+              Back
+            </button>
+            <button mat-raised-button color="primary" (click)="nextForm()">
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        *ngIf="step === 3"
+        class="steps step3"
+        [ngStyle]="
+          error
+            ? { border: '2px solid red' }
+            : { border: '2px solid rgb(81, 81, 81)' }
+        "
+      >
+        <h3>Information Details</h3>
+        <div class="example-form-fields">
+          <div class="radio-group">
+            <h3>Gender:</h3>
+            <div class="radiobtn">
+              <label *ngFor="let opt of ['Male', 'Female']" class="radio-label">
+                <input
+                  type="radio"
+                  name="gender"
+                  [value]="opt"
+                  formControlName="gender"
+                />
+                <span class="custom-radio"></span>
+                {{ opt }}
+              </label>
+            </div>
+          </div>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <textarea
+              matInput
+              placeholder="Enter address"
+              formControlName="address"
+            ></textarea>
+          </mat-form-field>
+          <div class="btns">
+            <button mat-raised-button class="back" (click)="prevForm()">
+              Back
+            </button>
+            <button
+              mat-raised-button
+              class="submit"
+              (click)="onSubmit()"
+              type="submit"
+              [disabled]="form.invalid"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main {
+  @include flex;
+  flex-direction: column;
+}
+.score {
+  font-size: 23px;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  background-color: rgb(252, 255, 47);
+}
+.container {
+  @include flex;
+  gap: 20px;
+  width: 100%;
+}
+.profile,
+.answer {
+  height: 500px;
+  width: 40%;
+  padding: 20px;
+  border: 2px solid red;
+  align-items: center;
+  display: flex;
+}
+.profile {
+  @include flex;
+  flex-direction: column;
+}
+.userdetail {
+  @include flex;
+  gap: 90px;
+  width: 600px;
+
+  margin: 20px;
+}
+.details {
+  width: 100%;
+  text-align: left;
+  span {
+    font-size: 17px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+  }
+}
+.details span:nth-child(1) {
+  color: rgb(139, 139, 139);
+}
+
+.details span:nth-child(2) {
+  color: rgb(255, 255, 255);
+  font-style: oblique;
+  font-size: 19px;
+}
+
+.answer {
+  overflow-y: scroll;
+
+  flex-direction: column;
+  border: 2px solid blue;
+}
+.answers {
+  width: 450px;
+  padding: 0px 10px;
+
+  border: 2px solid rgb(88, 88, 88);
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+  margin: 3px;
+  &:hover {
+    background-color: rgb(2, 31, 33);
+  }
+  span {
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  .red {
+    color: red;
+  }
+  .opt {
+    color: rgb(170, 155, 155);
+  }
+  .green {
+    color: green;
+  }
+  .ans {
+    margin: 5px 0px;
+  }
+
+  h3 {
+    color: rgb(185, 196, 208);
+  }
+}
+.btn {
+  background-color: red !important;
+  color: white !important;
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  position: fixed;
+  bottom: 50px;
+}

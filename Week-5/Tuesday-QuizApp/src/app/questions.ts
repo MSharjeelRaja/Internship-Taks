@@ -6,4 +6,5 @@ export interface Questions {
   opt3: string;
   opt4: string;
   correctopt: string;
+  Technology:string;
 }

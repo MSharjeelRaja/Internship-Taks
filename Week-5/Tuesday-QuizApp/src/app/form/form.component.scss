@@ -1,0 +1,47 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(93, 93, 93);
+  width: 700px;
+  padding: 20px;
+  margin: 10px auto;
+  font-size: 22px;
+}
+.btnss {
+  padding: 10px 50px;
+}
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  align-items: flex-start;
+}
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+.radio-label {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.radio-label input {
+  margin-right: 8px;
+  width: 20px;
+
+  height: 20px;
+}

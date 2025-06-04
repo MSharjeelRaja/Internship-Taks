@@ -1,1 +1,88 @@
-<p>result works!</p>
+<div class="main">
+  <p class="score">Result : {{ score }} / {{ questionsCount }}</p>
+  <div class="container">
+    <div class="profile">
+      <h2>{{ user?.name }}</h2>
+
+      <div class="userdetail">
+        <div class="details">
+          <span>Technology: </span>
+          <span> {{ user?.Technology }}</span>
+        </div>
+        <div class="details">
+          <span>Experience : </span>
+          <span> {{ user?.Experience }}</span>
+        </div>
+      </div>
+      <div class="userdetail">
+        <div class="details">
+          <span>Percentage : </span>
+          <span> {{ user?.percentage }}%</span>
+        </div>
+        <div class="details">
+          <span>Score : </span>
+          <span> {{ user?.score }}</span>
+        </div>
+      </div>
+      <div class="userdetail">
+        <div class="details">
+          <span>Gender : </span>
+          <span> {{ user?.gender }}</span>
+        </div>
+        <div class="details">
+          <span>Technology : </span>
+          <span> {{ user?.Technology }}</span>
+        </div>
+      </div>
+
+      <div class="userdetail">
+        <div class="details">
+          <span>Phone No : </span>
+          <span> {{ user?.PhoneNo }}</span>
+        </div>
+        <div class="details">
+          <span>GPA : </span>
+          <span> {{ user?.Gpa }}</span>
+        </div>
+      </div>
+
+      <div class="userdetail">
+        <div class="details">
+          <span>Address : </span>
+          <span> {{ user?.address }}</span>
+        </div>
+        <div class="details">
+          <span>Age : </span>
+          <span> {{ user?.Age }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="answer">
+      <div class="answers" *ngFor="let item of answers">
+        <h3>{{ item.question }}</h3>
+        <div class="ans">
+          <span class="opt">You Selected : </span>
+          <span>{{ item.selectedAnswer }}</span>
+        </div>
+        <div class="ans">
+          <span class="opt">Correct Answer : </span>
+          <span>{{ item.correctAnswer }}</span>
+          <p
+            [ngStyle]="{
+              color:
+                item.correctAnswer === item.selectedAnswer ? 'green' : 'red'
+            }"
+          >
+            {{
+              item.correctAnswer === item.selectedAnswer
+                ? "correct"
+                : "incorrect"
+            }}
+          </p>
+        </div>
+      </div>
+      <button mat-raised-button class="btn" (click)="navigate()">Retry</button>
+    </div>
+  </div>
+</div>

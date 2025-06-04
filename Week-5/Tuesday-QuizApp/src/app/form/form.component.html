@@ -1,1 +1,41 @@
-<p>form works!</p>
+<div class="form" *ngIf="questions.length && i < questions.length">
+  <h3 class="question">{{ questions[i].question }}</h3>
+  <div class="radio-group">
+    <label
+      *ngFor="
+        let opt of [
+          questions[i].opt1,
+          questions[i].opt2,
+          questions[i].opt3,
+          questions[i].opt4
+        ]
+      "
+      class="radio-label"
+    >
+      <input
+        type="radio"
+        name="answer"
+        [value]="opt"
+        [(ngModel)]="selectedAnswer"
+      />
+      {{ opt }}
+    </label>
+  </div>
+  <button
+    class="btnss"
+    mat-raised-button
+    color="primary"
+    (click)="next()"
+    [disabled]="!selectedAnswer"
+  >
+    Next
+  </button>
+</div>
+
+<mat-spinner
+  *ngIf="loading"
+  class="loader"
+  diameter="80"
+  strokeWidth="4"
+  class="loader"
+></mat-spinner>
