@@ -26,6 +26,7 @@ import { User } from '../user';
 })
 export class FormComponent {
   questions: Questions[] = [];
+  length = 0;
   i = 0;
   selectedAnswer: string = '';
   score = 0;
@@ -55,9 +56,10 @@ export class FormComponent {
       this.client.get<Questions[]>(this.apiurl).subscribe((d) => {
         this.questions = d
           .filter((question) => question.Technology === this.user?.Technology)
-          .slice(0, 4);
+          .slice(0, 6);
 
         console.log('Filtered questions:', this.questions);
+        this.length = this.questions.length;
         this.loading = false;
       });
     }, 1000);

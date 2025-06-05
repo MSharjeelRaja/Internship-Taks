@@ -1,4 +1,26 @@
-h2{
-    color: red;
-    background-color: black;
+
+.products{
+display: flex;
+flex-wrap: wrap;
+padding: 10px 2px;
+gap: 16px;
+justify-content: center;
+  .product{
+ flex: 1 1 calc(25% - 16px);
+box-sizing: border-box;
+padding: 10px;
+border: 2px solid gray;
+border-radius: 8px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+  }
+  img{
+    border-radius: 10px;
+  }
+  p{
+    color: rgb(181, 181, 181);
+  }
 }

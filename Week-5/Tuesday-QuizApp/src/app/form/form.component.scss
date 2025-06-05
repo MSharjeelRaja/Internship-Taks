@@ -12,6 +12,16 @@
 .btnss {
   padding: 10px 50px;
 }
+.count {
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+.btnss:disabled {
+  background-color: rgb(88, 88, 88) !important;
+  color: black !important;
+
+}
+
 .radio-group {
   display: flex;
   flex-direction: column;

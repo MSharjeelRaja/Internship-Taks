@@ -5,13 +5,13 @@ import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor,matf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   prod: products[] = [];
-
+categories:string[]=[]
   constructor(private service: ServiceService) {
 
 
@@ -20,7 +20,9 @@ export class AppComponent {
   ngOnInit() {
     this.service.getproducts().subscribe(d => {
       this.prod = d;
-      console.log(this.prod);
+  this.categories =[...new Set(d.map(item => item.Category))] ;
+
+      console.log(this.categories);
     });
   }
 }

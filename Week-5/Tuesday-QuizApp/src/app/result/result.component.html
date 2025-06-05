@@ -59,7 +59,17 @@
     </div>
 
     <div class="answer">
-      <div class="answers" *ngFor="let item of answers">
+      <h1>Summary</h1>
+      <div
+        class="answers"
+        [ngStyle]="{
+          'border-left':
+            item.correctAnswer === item.selectedAnswer
+              ? '3px solid green'
+              : '3px solid red'
+        }"
+        *ngFor="let item of answers"
+      >
         <h3>{{ item.question }}</h3>
         <div class="ans">
           <span class="opt">You Selected : </span>
