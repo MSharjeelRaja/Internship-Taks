@@ -1,0 +1,39 @@
+<div class="body">
+  <h2>Company  Form</h2>
+  <form
+
+
+    class="material-form"
+    novalidate
+  >
+
+    <mat-form-field appearance="fill" class="field">
+      <mat-label>Kilometers Driven</mat-label>
+      <input
+        type="number"
+        matInput
+
+  (input)="kilometers.set($any($event.target).value)"
+        required
+
+      />
+
+    </mat-form-field>
+
+   <mat-form-field appearance="fill" class="field">
+      <mat-label>Liters Of Petrol</mat-label>
+      <input
+        type="number"
+        matInput
+
+ (input)="liters.set($any($event.target).value)"
+        required
+
+      />
+
+    </mat-form-field>
+
+
+  </form>
+  <h1>Petrol Average = {{this.avg()}}</h1>
+</div>
