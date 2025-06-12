@@ -1,0 +1,44 @@
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-container {
+
+
+  .steps {
+
+
+  width: 500px;
+
+    padding: 30px;
+    border-radius: 10px;
+    margin: auto;
+
+    background: #000000;
+  }
+
+  .example-form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .example-form-field,
+  mat-form-field {
+    width: 100%;
+  }
+
+  .example-chip-list mat-chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
+
+}
+h3{
+  text-align: center;
+}

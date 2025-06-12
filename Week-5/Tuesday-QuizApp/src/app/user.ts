@@ -11,4 +11,5 @@ export interface User {
   Gpa: number;
   address: string;
   gender: string;
+  skills:string[]
 }

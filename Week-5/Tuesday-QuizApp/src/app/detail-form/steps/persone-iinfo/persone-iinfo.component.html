@@ -1,0 +1,73 @@
+<div class="form">
+  <div class="example-container">
+    <h1>Fill The Form</h1>
+
+    <div
+      class="steps step1"
+      [ngStyle]="
+        error
+          ? { border: '2px solid red' }
+          : { border: '2px solid rgb(81, 81, 81)' }
+      "
+    >
+      <h2>Personal Details</h2>
+
+      <div class="example-form-fields">
+        <form [formGroup]="form">
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Enter name" formControlName="name" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Age</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="Enter age"
+              formControlName="Age"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Phone number</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="PhoneNo"
+              placeholder="Enter phone"
+              maxlength="11"
+            />
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-hint>Include +923</mat-hint>
+
+            <mat-error
+              *ngIf="
+                form.get('PhoneNo')?.hasError('required') &&
+                form.get('PhoneNo')?.touched
+              "
+            >
+              Phone number is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                form.get('PhoneNo')?.hasError('minlength') &&
+                form.get('PhoneNo')?.touched
+              "
+            >
+              Phone number must be at least 11 digits
+            </mat-error>
+            <mat-error
+              *ngIf="
+                form.get('PhoneNo')?.hasError('pattern') &&
+                form.get('PhoneNo')?.touched
+              "
+            >
+              Phone number must Start With 923
+            </mat-error>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

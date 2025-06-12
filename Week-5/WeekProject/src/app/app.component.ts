@@ -5,7 +5,7 @@ import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgFor,matf],
+  imports: [NgFor,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

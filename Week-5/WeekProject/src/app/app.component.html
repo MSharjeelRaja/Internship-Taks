@@ -1,11 +1,5 @@
 <div class="products">
-  <div class="dropdown">     <mat-form-field>
-            <mat-label>Select</mat-label>
-            <mat-select formControlName="Technology">
-              <mat-option value="Angular">Angular</mat-option>
-              <mat-option value="React">React</mat-option>
-            </mat-select>
-          </mat-form-field></div>
+  <div class="dropdown"></div>
 <div *ngFor="let item of prod" class="product">
   <img src="{{item.Image}}" alt="">
 <h1>{{item.Name}}</h1>

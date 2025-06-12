@@ -1,6 +1,12 @@
 import { NgFor, NgIf, NgStyle } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  ViewChild,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+
 import {
   FormBuilder,
   FormControl,
@@ -25,24 +31,31 @@ import { MatSelectModule } from '@angular/material/select';
 import { map } from 'rxjs/operators';
 import { User } from '../user';
 import { Route, Router } from '@angular/router';
+import { MatStepper, MatStepperModule } from '@angular/material/stepper';
+import { PersoneIinfoComponent } from './steps/persone-iinfo/persone-iinfo.component';
+import { InformationaIinfoComponent } from './steps/informationa-iinfo/informationa-iinfo.component';
+import { EducationalIinfoComponent } from './steps/educational-iinfo/educational-iinfo.component';
 @Component({
   selector: 'app-detail-form',
   imports: [
     FormsModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    MatStepperModule,
     MatRadioModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    NgIf,
-    NgStyle,
+
     MatIconModule,
-    NgFor,
+
     MatButtonModule,
-    MatHint,
+
     MatIconModule,
-    MatLabel,
+
+    PersoneIinfoComponent,
+    InformationaIinfoComponent,
+    EducationalIinfoComponent,
   ],
   standalone: true,
   templateUrl: './detail-form.component.html',
@@ -50,6 +63,13 @@ import { Route, Router } from '@angular/router';
 })
 export class DetailFormComponent {
   constructor(private route: Router) {}
+  @ViewChild('stepper') stepper!: MatStepper;
+  isLinear = false;
+  step = 1;
+  error = false;
+  user: User[] = [];
+  skills: string[] = [];
+
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     Age: new FormControl('', [Validators.required]),
@@ -60,13 +80,12 @@ export class DetailFormComponent {
       Validators.minLength(10),
       Validators.pattern('^\\923[0-9]{8}$'),
     ]),
+    skills: new FormControl<string[]>([]),
     Gpa: new FormControl('', [Validators.required]),
     gender: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
   });
-  step: number = 1;
-  error = false;
-  user: User[] = [];
+
   onSubmit() {
     if (this.form.valid) {
       const ids = Math.floor(Math.random() * 1000) + 1;
@@ -83,6 +102,7 @@ export class DetailFormComponent {
         address: this.form.value.address!,
         percentage: 0,
         score: 0,
+        skills: this.form.value.skills || [],
       };
       localStorage.setItem('currentuser', JSON.stringify(newUser));
       this.user.push(newUser);
@@ -98,8 +118,10 @@ export class DetailFormComponent {
   }
 
   nextForm() {
-    if (this.step === 1) {
-      console.log('PhoneNo value:', this.form.get('PhoneNo')?.value);
+
+    const stepIndex = this.stepper.selectedIndex;
+
+    if (stepIndex === 0) {
 
       if (
         this.form.get('name')?.invalid ||
@@ -114,7 +136,8 @@ export class DetailFormComponent {
       }
     }
 
-    if (this.step === 2) {
+    if (stepIndex === 1) {
+
       if (
         this.form.get('Experience')?.invalid ||
         this.form.get('Technology')?.invalid ||
@@ -128,16 +151,12 @@ export class DetailFormComponent {
       }
     }
 
-    if (this.step < 3) {
-      this.step++;
-      this.error = false;
-    }
+
+    this.error = false;
+    this.stepper.next();
   }
 
   prevForm() {
-    if (this.step > 1) {
-      this.step--;
-      this.error = false;
-    }
+    this.stepper.previous();
   }
 }

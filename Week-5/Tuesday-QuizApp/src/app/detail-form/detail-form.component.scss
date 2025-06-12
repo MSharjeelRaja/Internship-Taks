@@ -10,7 +10,10 @@
 .example-container mat-form-field {
   width: 320px;
 }
-
+.example-container {
+  @include flex;
+  flex-direction: column;
+}
 .next {
   margin-top: 30px;
 }
@@ -26,6 +29,11 @@
   margin: 0 12px;
 }
 
+::ng-deep .mat-step-text-label {
+  color: #ffffff;
+
+
+}
 .example-form-fields {
   display: flex;
   align-items: flex-start;
@@ -45,11 +53,15 @@
     padding: 30px;
     border-radius: 10px;
     margin: 10px auto;
+
   }
 
-  .btns {
-    display: flex;
+
+}
+.btns {
+   @include flex;
     gap: 130px;
+
   }
   .back {
     background-color: rgb(255, 255, 255);
@@ -68,28 +80,26 @@
       color: rgb(27, 146, 65);
       transition: 0.4s ease-in-out;
     }
-  }
-  .radio-group {
-    @include flex();
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 20px;
-    h3 {
-      margin-left: -70px;
-      margin-bottom: 0px;
-    }
-  }
 
-  .radio-label {
-    margin: 10px;
   }
-  .radio-label input[type="radio"] {
-    position: relative;
-    top: 4px;
-    right: 5px;
-
-    height: 20px;
-    width: 20px;
-    cursor: pointer;
-  }
+.stepper{
+  background-color: black;
 }
+.step-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  gap: 130px;
+  margin-top: 20px;
+}
+ .nextbtn{
+      background-color: rgb(25, 115, 205);
+      color: white !important;
+ padding: 5px 35px;
+    }

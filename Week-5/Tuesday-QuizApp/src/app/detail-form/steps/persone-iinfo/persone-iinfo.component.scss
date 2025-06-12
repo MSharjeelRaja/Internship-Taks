@@ -1,0 +1,40 @@
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-container {
+    @include flex;
+    flex-direction: column;
+
+  .steps {
+
+   max-width: 500px;
+
+
+    padding: 30px;
+    border-radius: 10px;
+
+
+    background: #000000;
+  }
+
+  .example-form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+  }
+
+  .example-form-field,
+  mat-form-field {
+    width: 100%;
+  }
+
+
+
+}
+h2{
+  text-align: center;
+}

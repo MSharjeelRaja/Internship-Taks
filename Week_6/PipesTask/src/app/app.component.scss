@@ -1,0 +1,74 @@
+
+.main{
+  background-color: rgb(255, 255, 255);
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px;
+height: 300px;
+}
+.inp{
+  padding:  20px 5px;width: 400px; outline: none; border: 2px solid rgb(40, 40, 40);border-radius: 5px;
+
+}
+.btns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn{
+  padding: 7px 15px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  background-color: rgb(0, 179, 255);
+  border: none;
+  border-radius: 6px;
+  margin: 7px;
+
+  &:hover{
+    background-color: rgb(221, 0, 0);
+
+  }
+}
+.table{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+flex-direction: column;
+  padding: 20px;
+
+ background-color: rgb(160, 160, 160);
+
+  table{
+width: 80%;
+ background-color: white;
+
+border-collapse: separate;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  border-spacing: 0;
+
+td,th{
+  padding: 5px;
+  text-align: left;
+}
+
+  }
+tr{
+  color: white;
+  background-color: rgb(58, 58, 58);
+}
+.bg-red {
+  background-color: rgba(255, 0, 0, 0.677);
+
+}
+
+.bg-orange {
+  background-color: rgba(255, 166, 0, 0.663);
+;}
+
+.bg-green {
+  background-color: rgba(0, 128, 0, 0.748);
+
+}
+
+}

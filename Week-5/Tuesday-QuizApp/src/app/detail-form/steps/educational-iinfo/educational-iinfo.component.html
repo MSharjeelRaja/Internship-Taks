@@ -1,0 +1,66 @@
+<div class="example-container">
+  <div
+    class="steps step2"
+    [ngStyle]="
+      error
+        ? { border: '2px solid red' }
+        : { border: '2px solid rgb(81, 81, 81)' }
+    "
+  >
+    <h3>Professional Details</h3>
+    <form [formGroup]="form" class="example-form-fields">
+      <mat-form-field appearance="fill">
+        <mat-label>Experience</mat-label>
+        <input
+          matInput
+          placeholder="e.g. 2 years"
+          formControlName="Experience"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-chip-list" appearance="fill">
+        <mat-label>Choose Skills</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Skill selection">
+          @for (skill of skills; track skill) {
+
+          <mat-chip-row
+            [editable]="true"
+            (edited)="edit(skill, $event)"
+            (removed)="remove(skill)"
+            [aria-description]="'Press enter to edit ' + skill"
+          >
+            {{ skill }}
+            <button matChipRemove [attr.aria-label]="'Remove ' + skill">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+          }
+          <input
+            placeholder="New skill..."
+            [matChipInputFor]="chipGrid"
+            (matChipInputTokenEnd)="add($event)"
+          />
+        </mat-chip-grid>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Technology</mat-label>
+        <mat-select formControlName="Technology">
+          <mat-option value="Angular">Angular</mat-option>
+          <mat-option value="React">React</mat-option>
+          <mat-option value="Both">Both</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>GPA</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="Enter GPA"
+          formControlName="Gpa"
+        />
+      </mat-form-field>
+    </form>
+  </div>
+</div>

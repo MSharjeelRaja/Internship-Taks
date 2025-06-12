@@ -50,19 +50,22 @@ export class FormComponent {
 
     const storedusers = localStorage.getItem('currentuser');
     this.user = storedusers ? JSON.parse(storedusers) : null;
+    console.log(storedusers);
     setTimeout(() => {
-      this.loading = false;
-
       this.client.get<Questions[]>(this.apiurl).subscribe((d) => {
-        this.questions = d
-          .filter((question) => question.Technology === this.user?.Technology)
-          .slice(0, 6);
+        if (this.user?.Technology == 'Both') {
+          this.questions = d.slice(0, 6);
+        } else {
+          this.questions = d
+            .filter((question) => question.Technology === this.user?.Technology)
+            .slice(0, 6);
+        }
 
         console.log('Filtered questions:', this.questions);
         this.length = this.questions.length;
         this.loading = false;
       });
-    }, 1000);
+    }, 2000);
     console.log(
       'in form' +
         this.user +

@@ -58,10 +58,10 @@ width: 40%;
 }
 .userdetail {
   @include flex;
-  gap: 90px;
+  gap: 10px;
   width: 600px;
 
-  margin: 20px;
+  margin: 10px;
 }
 .details {
   width: 100%;
@@ -142,4 +142,9 @@ width: 40%;
   padding: 10px 20px;
   position: fixed;
   bottom: 10px;
+}
+.blue{
+@include flex();
+display: inline;
+   color: rgb(10, 136, 254);
 }

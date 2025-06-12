@@ -1,0 +1,40 @@
+<div class="example-container">
+  <div
+    class="steps step3"
+    [ngStyle]="
+      error
+        ? { border: '2px solid red' }
+        : { border: '2px solid rgb(81, 81, 81)' }
+    "
+  >
+    <h3>Information Details</h3>
+    <form [formGroup]="form">
+      <div class="example-form-fields">
+        <div class="radio-group">
+          <h3>Gender:</h3>
+          <div class="radiobtn">
+            <label *ngFor="let opt of ['Male', 'Female']" class="radio-label">
+              <input
+                type="radio"
+                name="gender"
+                [value]="opt"
+                formControlName="gender"
+              />
+              <span class="custom-radio"></span>
+              {{ opt }}
+            </label>
+          </div>
+        </div>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <textarea
+            matInput
+            placeholder="Enter address"
+            formControlName="address"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</div>
