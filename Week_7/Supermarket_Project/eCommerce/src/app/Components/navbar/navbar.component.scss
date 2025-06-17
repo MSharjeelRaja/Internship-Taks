@@ -1,0 +1,52 @@
+@mixin flex {
+  display: flex;
+
+}
+$primary-color: #14469c;
+$secondary-color: #f89c26;
+$text-color: #333;
+$background-color: #072c6178;
+:host{
+font-family: Arial, Helvetica, sans-serif;
+}
+
+nav{
+padding: 5px 20px;
+
+
+ z-index: 100;
+ position: fixed;
+ width: 100%;
+background-color:white;
+@include flex;
+justify-content: space-between;
+ol{
+  display: flex;
+  list-style: none;
+
+letter-spacing: 1px;
+  gap:50px;
+  margin-right: 40px;
+  a:hover{
+    transform: translateY(-3px);
+    transition: 0.3s ease-in-out;
+cursor: pointer;
+color: $secondary-color;
+
+  }
+  a{
+    text-decoration: none;
+    color: black;
+  }
+   .logout{
+    color: red;
+  }
+}
+
+  .img{
+    width: 150px;
+    height: 50px;
+  }
+
+}
+

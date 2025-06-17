@@ -1,0 +1,27 @@
+<nav class="fixed-nav">
+  <div class="logo">
+    <img class="img" src="images/imtiaz-logo.png" alt="Imtiaz Logo" />
+  </div>
+  <div class="options">
+    <ol>
+      <li *ngIf="user == 'admin'">
+        <a routerLink="/admin-home" routerLinkActive="active">Home</a>
+      </li>
+
+      <li *ngIf="user == 'admin'">
+        <a [routerLink]="['/add-product', user]">Add Product</a>
+      </li>
+
+      <li *ngIf="user == 'admin'">
+        <a [routerLink]="['/product', user]" routerLinkActive="active"
+          >Products</a
+        >
+      </li>
+      <li>
+        <a routerLink="/login" routerLinkActive="active" class="logout"
+          >Logout</a
+        >
+      </li>
+    </ol>
+  </div>
+</nav>
