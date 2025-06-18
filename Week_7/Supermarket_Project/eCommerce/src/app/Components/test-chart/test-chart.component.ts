@@ -1,6 +1,12 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgChartsModule } from 'ng2-charts';
+import { NgChartsModule, BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration } from 'chart.js';
 
 @Component({
@@ -10,17 +16,17 @@ import { ChartConfiguration } from 'chart.js';
   templateUrl: './test-chart.component.html',
   styleUrl: './test-chart.component.scss',
 })
-export class TestChartComponent {
+export class TestChartComponent implements OnChanges {
+  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
   public chartType: 'bar' = 'bar';
+  @Input() cartdata: any[] = [];
 
   public chartData: ChartConfiguration<'bar'>['data'] = {
-    labels: ['Electronics', 'Groceries', 'Clothing', 'Medical', 'Cosmetics'],
     datasets: [
       {
         label: 'Product Sales',
-        data: [140, 90, 175, 24, 123],
+        data: [],
         barThickness: 50,
-
         borderRadius: 2,
         backgroundColor: [
           '#42A5F5',
@@ -67,4 +73,18 @@ export class TestChartComponent {
       },
     },
   };
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['cartdata'] && this.cartdata) {
+      const categoryMap: { [key: string]: number } = {};
+
+      for (const item of this.cartdata) {
+        const category = item.Category || 'Unknown';
+        categoryMap[category] = (categoryMap[category] || 0) + 1;
+      }
+
+      this.chartData.labels = Object.keys(categoryMap);
+      this.chartData.datasets[0].data = Object.values(categoryMap);
+    }
+  }
 }

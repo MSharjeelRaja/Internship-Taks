@@ -22,7 +22,10 @@ import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-login-authenticate',
-  imports: [    FormsModule,MatCardModule,CommonModule,
+  imports: [
+    FormsModule,
+    MatCardModule,
+    CommonModule,
     ReactiveFormsModule,
     RouterLink,
     MatFormFieldModule,
@@ -31,10 +34,11 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     NgIf,
     AngularFireAuthModule,
-    MatError,],
-  standalone:true,
+    MatError,
+  ],
+  standalone: true,
   templateUrl: './login-authenticate.component.html',
-  styleUrl: './login-authenticate.component.scss'
+  styleUrl: './login-authenticate.component.scss',
 })
 export class LoginAuthenticateComponent {
   constructor(
@@ -42,7 +46,7 @@ export class LoginAuthenticateComponent {
 
     private authservice: AuthenticateService
   ) {}
-errormessage:string|null=null;
+  errormessage: string | null = null;
   name = 'Sharjeel';
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -59,18 +63,14 @@ errormessage:string|null=null;
       this.authservice
         .login(this.emailFormControl.value!, this.passwordFormControl.value!)
         .subscribe({
-next:()=>{
-  this.router.navigate(['/admin-home']);
-},
-error:(er)=>{
-  alert('Invalid Credentials')
-  this.errormessage=er.code;
-}
-
+          next: () => {
+            this.router.navigate(['/admin-home']);
+          },
+          error: (er) => {
+            alert('Invalid Credentials');
+            this.errormessage = er.code;
+          },
         });
     }
-
   }
-
-
 }

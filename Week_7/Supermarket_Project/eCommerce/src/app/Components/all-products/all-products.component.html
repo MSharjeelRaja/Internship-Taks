@@ -3,8 +3,14 @@
 <div class="main">
   <h1>All Products</h1>
   <div class="products" *ngIf="!loader">
-    @for(product of products; track product.id){
-    <div class="product">
+    <div
+      class="product"
+      *ngFor="
+        let product of products
+          | paginate : { itemsPerPage: 10, currentPage: p };
+        trackBy: trackById
+      "
+    >
       @if(user=='customer'){
       <span (click)="addtocart(product)" class="addtocart"></span>
       }
@@ -21,14 +27,18 @@
           {{ product.Stock }} <span class="small">items Left</span></span
         >
       </div>
-      @if(user=='admin'){<button [appUpdateProduct]="product" [user]='"admin"' class="btn">
+      @if(user=='admin'){<button
+        [appUpdateProduct]="product"
+        [user]="'admin'"
+        class="btn"
+      >
         Manage Product</button
       >}
     </div>
-
-    }
   </div>
   <div class="spinner" *ngIf="loader">
     <mat-spinner [diameter]="70"></mat-spinner>
   </div>
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>

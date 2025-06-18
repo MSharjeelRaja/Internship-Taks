@@ -14,11 +14,11 @@ export class AuthenticateService {
   firebaseAuth = inject(Auth);
 
   login(email: string, password: string): Observable<void> {
-    const promise = signInWithEmailAndPassword(this.firebaseAuth, email, password).then(() => {});
+    const promise = signInWithEmailAndPassword(
+      this.firebaseAuth,
+      email,
+      password
+    ).then(() => {});
     return from(promise);
   }
-
-
-
-
 }

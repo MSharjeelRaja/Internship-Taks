@@ -1,8 +1,8 @@
 <div class="main">
   <app-navbar [user]="'admin'"></app-navbar>
   <div class="con">
-    <div class="chart">
-      <app-test-chart></app-test-chart>
+    <div class="chart" *ngIf="cart.length > 0">
+      <app-test-chart [cartdata]="cart"></app-test-chart>
     </div>
     <div class="cart">
       <h2>Items To Deliver</h2>
@@ -31,7 +31,7 @@
           <ng-container matColumnDef="date">
             <th mat-header-cell *matHeaderCellDef>Date</th>
             <td mat-cell *matCellDef="let element">
-              {{ element.date | date : "long" }}
+              {{ element.date | date : "medium" }}
             </td>
           </ng-container>
 

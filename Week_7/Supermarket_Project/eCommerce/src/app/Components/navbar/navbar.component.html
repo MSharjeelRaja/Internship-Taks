@@ -2,7 +2,7 @@
   <div class="logo">
     <img class="img" src="images/imtiaz-logo.png" alt="Imtiaz Logo" />
   </div>
-  <div class="options">
+  <div class="options" [ngClass]="{ showMenu: isShow }">
     <ol>
       <li *ngIf="user == 'admin'">
         <a routerLink="/admin-home" routerLinkActive="active">Home</a>
@@ -24,4 +24,5 @@
       </li>
     </ol>
   </div>
+  <button class="menu" (click)="toggleShow()">Menu</button>
 </nav>

@@ -1,38 +1,41 @@
-@mixin flex{
+@mixin flex {
   display: flex;
   justify-content: center;
   align-items: center;
-}$primary-color: #14469c;
+}
+$primary-color: #14469c;
 $secondary-color: #f89c26;
 $text-color: #333;
 $background-color: #072c6178;
 
-.main{
- background-color: rgb(235, 234, 234);
+.main {
+  background-color: rgb(235, 234, 234);
   height: 100vh;
 
-.con{
-padding-top: 70px;
-}
-  .chart{
-
-    padding: 20px 2px ;
-background-color: rgb(255, 255, 255);
+  .con {
+    padding-top: 70px;
   }
-  .cart{
+  .chart {
+    padding: 20px 2px;
+    background-color: rgb(255, 255, 255);
+  }
+  .cart {
     min-height: 200px;
-
     text-align: center;
     margin: 10px 20px;
-    padding: 20px ;
+    padding: 20px;
     background-color: rgb(220, 220, 220);
-border-radius: 6px;
+    border-radius: 6px;
   }
-
 }
 
 .carts {
-
   width: 800px;
   margin: 0 auto;
+}
+@media screen and (max-width: 700px) {
+  .carts {
+    width: 98%;
+    overflow-y: scroll;
+  }
 }

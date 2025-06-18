@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { Product } from '../../interfaces/product';
-import { NgIf } from '@angular/common';
+import { NgIf, NgStyle } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -28,6 +28,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     MatButtonModule,
     MatSelectModule,
     MatCardModule,
+    NgStyle
   ],
   standalone: true,
   templateUrl: './add-product.component.html',
@@ -60,12 +61,10 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit() {
     if (this.dialogData) {
-
       this.isEditMode = true;
       this.user = this.dialogData.user || 'admin';
       this.productform.patchValue(this.dialogData);
     } else {
-
       this.route.params.subscribe((params) => {
         this.user = params['user'] || 'admin';
         if (this.route.snapshot.data['product']) {
@@ -88,7 +87,7 @@ export class AddProductComponent implements OnInit {
         next: () => {
           if (this.dialogRef) {
             this.dialogRef.close(true);
-            alert('Product Updated')
+            alert('Product Updated');
             this.router
               .navigateByUrl('/', { skipLocationChange: true })
               .then(() => {
@@ -103,7 +102,7 @@ export class AddProductComponent implements OnInit {
     } else {
       this.productService.addproduct(formValue).subscribe({
         next: () => {
-           alert('Product Added')
+          alert('Product Added');
           this.router.navigate(['/product', this.user]);
         },
         error: (err) => {
@@ -123,5 +122,26 @@ export class AddProductComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     }
+  }
+  closeDialogue(){
+  this.dialogRef.close(true);
+  }
+deleteProduct(){
+ this.productService.deleteproduct(this.productform.value.id).subscribe({
+        next: () => {
+          if (this.dialogRef) {
+            this.dialogRef.close(true);
+            alert('Product Deleted');
+            this.router
+              .navigateByUrl('/', { skipLocationChange: true })
+              .then(() => {
+                this.router.navigate(['/product', this.user]);
+              });
+          }
+        },
+        error: (err) => {
+          console.error('Error Deleting product:', err);
+        },
+      });
   }
 }

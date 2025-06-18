@@ -1,11 +1,19 @@
 <div class="main">
-
-  <app-navbar *ngIf="!isEditMode" [user]="'admin'"></app-navbar>
+  <app-navbar class="nav" *ngIf="!isEditMode" [user]="'admin'"></app-navbar>
 
   <div class="container">
-    <mat-card class="forms">
-      <h1>Add a New Product</h1>
-      <form class="form" [formGroup]="productform" (ngSubmit)="onSubmit()">
+   <mat-card class="forms" [ngStyle]="{ 'margin-top': !isEditMode ? '100px' : '20px' }">
+
+      <h1 >{{isEditMode ?'Update the Product': 'Add a New Product' }}</h1>
+      <form class="form" [formGroup]="productform" >
+        <button
+            mat-raised-button
+class="close-btn"
+(click)="closeDialogue()"
+*ngIf="isEditMode"
+          >
+            Close
+          </button>
         <div class="inputs">
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Product Name</mat-label>
@@ -56,10 +64,19 @@
         <div class="btn">
           <button
             mat-raised-button
-            type="submit"
+
+            (click)="onSubmit()"
             [disabled]="!productform.valid"
           >
             Submit Product
+          </button>
+            <button
+            mat-raised-button
+*ngIf="isEditMode"
+(click)="deleteProduct()"
+class="deleteBtn"
+          >
+           Delete Product
           </button>
         </div>
       </form>

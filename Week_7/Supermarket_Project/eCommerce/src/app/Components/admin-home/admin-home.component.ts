@@ -29,6 +29,7 @@ export class AdminHomeComponent {
 
   constructor(private route: ActivatedRoute, private service: ProductService) {}
   cart: Product[] = [];
+
   ngOnInit(): void {
     this.name = this.route.snapshot.paramMap.get('name') || '';
     this.cart = this.service.getcart();

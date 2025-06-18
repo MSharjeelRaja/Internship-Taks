@@ -16,12 +16,10 @@ export class UpdateProductDirective {
     this.dialog.open(AddProductComponent, {
       width: '800px',
 
-
       data: {
         ...this.productData,
         user: this.user,
       },
-
     });
   }
 }

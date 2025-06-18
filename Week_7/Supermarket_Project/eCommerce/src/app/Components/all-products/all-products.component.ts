@@ -1,3 +1,4 @@
+import { NgxPaginationModule } from 'ngx-pagination';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { Product } from '../../interfaces/product';
@@ -9,6 +10,7 @@ import { PriceFormatPipe } from '../../../pipes/price-format.pipe';
 import { ActivatedRoute } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { UpdateProductDirective } from '../../directives/update-product.directive';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-all-products',
@@ -17,7 +19,9 @@ import { UpdateProductDirective } from '../../directives/update-product.directiv
     CommonModule,
     UpdateProductDirective,
     PriceFormatPipe,
+    NgxPaginationModule,
     NavbarComponent,
+    MatPaginatorModule,
     NgIf,
   ],
   standalone: true,
@@ -28,35 +32,45 @@ export class AllProductsComponent implements OnInit {
   products: Product[] = [];
   loader = true;
   user = '';
+  p: number = 1;
+
   @Input() users!: string;
   @Input() ascomp: boolean = false;
+
   constructor(
     private Productservice: ProductService,
     private route: ActivatedRoute
   ) {}
+
   ngOnInit() {
     this.user = this.route.snapshot.paramMap.get('user') || '';
     this.loadProducts();
   }
-  loadProducts() {
-    console.log('loadProducts() called');
 
+  loadProducts() {
     this.loader = true;
-    this.Productservice.getproduct().subscribe((d) => {
-      console.log('Products received:', d);
-      this.products = d;
+
+    this.Productservice.getProduct().subscribe((data) => {
+      this.products = Object.entries(data || {}).map(([key, value]) => ({
+        ...value,
+        id: key,
+      }));
+
       this.loader = false;
     });
   }
 
-  random = Math.floor(Math.random() * 100);
   addtocart(prod: Product) {
-    prod.customerid = 'CustomerNo' + this.random;
+    prod.customerid = 'CustomerNo' + Math.floor(Math.random() * 100);
     prod.date = new Date().toISOString();
 
     let cart = JSON.parse(localStorage.getItem('cartitem') || '[]');
     cart.push(prod);
     localStorage.setItem('cartitem', JSON.stringify(cart));
     alert(prod.Name + ' Added to cart');
+  }
+
+  trackById(index: number, item: Product) {
+    return item.id;
   }
 }
