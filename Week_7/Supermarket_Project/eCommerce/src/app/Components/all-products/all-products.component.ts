@@ -10,7 +10,6 @@ import { PriceFormatPipe } from '../../../pipes/price-format.pipe';
 import { ActivatedRoute } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { UpdateProductDirective } from '../../directives/update-product.directive';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-all-products',
@@ -21,7 +20,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
     PriceFormatPipe,
     NgxPaginationModule,
     NavbarComponent,
-    MatPaginatorModule,
+
     NgIf,
   ],
   standalone: true,
@@ -66,6 +65,7 @@ export class AllProductsComponent implements OnInit {
 
     let cart = JSON.parse(localStorage.getItem('cartitem') || '[]');
     cart.push(prod);
+    console.log(cart)
     localStorage.setItem('cartitem', JSON.stringify(cart));
     alert(prod.Name + ' Added to cart');
   }

@@ -13,6 +13,7 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   addproduct(product: Product): Observable<any> {
+    console.log(product)
     return this.http.post(`${this.firebaseURL}.json`, product);
   }
 
@@ -31,6 +32,7 @@ export class ProductService {
   }
   getcart() {
     const cartData = localStorage.getItem('cartitem');
+    console.log(cartData)
     return cartData ? JSON.parse(cartData) : [];
   }
 }

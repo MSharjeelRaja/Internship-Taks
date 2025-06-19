@@ -80,6 +80,7 @@ export class TestChartComponent implements OnChanges {
 
       for (const item of this.cartdata) {
         const category = item.Category || 'Unknown';
+        console.log(category);
         categoryMap[category] = (categoryMap[category] || 0) + 1;
       }
 
